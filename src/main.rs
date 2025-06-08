@@ -100,7 +100,7 @@ impl Connection {
 
     fn eq(self) -> Self {
         match self {
-            Connection::Impedance(_) => {self}
+            Connection::Impedance(_) => { self }
             Connection::Series(boxed) => {
                 let (a, b) = *boxed;
                 let a = if let Connection::Impedance(_) = a { a } else { a.eq() };
@@ -119,7 +119,6 @@ impl Connection {
                     _ => Connection::new_parallel(a, b)
                 }
             }
-            // _ => {self}
         }
     }
 
@@ -127,14 +126,12 @@ impl Connection {
         match self {
             Connection::Impedance(z) => {v / z},
             _ => todo!()
-
         }
     }
      fn v_from_i(&self, i: Complex<f64>) -> Complex<f64> {
         match self {
             Connection::Impedance(z) => {i * z},
             _ => todo!()
-
         }
     }
     fn unwrap(&self) -> Complex<f64> {
