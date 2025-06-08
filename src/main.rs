@@ -16,7 +16,6 @@ enum Connection{
 impl Debug for Connection{
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            // Connection::X => {write!(f, "x")},
             Connection::Impedance(v) => {write!(f, "{}", v)}
             Connection::Series(boxed) => {
                 let (a, b) = boxed.as_ref();
@@ -127,21 +126,21 @@ impl Connection {
     fn i_from_v(&self, v: Complex<f64>) -> Complex<f64> {
         match self {
             Connection::Impedance(z) => {v / z},
-            _ => Complex::new(f64::NAN, 1.0)
+            _ => todo!()
 
         }
     }
      fn v_from_i(&self, i: Complex<f64>) -> Complex<f64> {
         match self {
             Connection::Impedance(z) => {i * z},
-            _ => Complex::new(f64::NAN, 1.0)
+            _ => todo!()
 
         }
     }
     fn unwrap(&self) -> Complex<f64> {
         match self {
             Connection::Impedance(z) => {z.clone()},
-            _ => {panic!("Só é possível 'unwrap' Connection::Final")}
+            _ => {panic!("Só é possível 'unwrap' Connection::Impedance")}
         }
     }
 }
