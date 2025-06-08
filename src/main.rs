@@ -61,24 +61,28 @@ impl Add<Connection> for &Connection {
 impl BitOr for Connection {
     type Output = Self;
     fn bitor(self, other: Self) -> Self {
+        // println!("C | C -> C");
         Connection::new_parallel(self, other)
     }
 }
 impl BitOr for &Connection {
     type Output = Connection;
     fn bitor(self, other: Self) -> Connection {
+        // println!("&C | &C -> C");
         Connection::Parallel(Box::new((self.clone(), other.clone())))
     }
 }
 impl BitOr<Connection> for &Connection {
     type Output = Connection;
     fn bitor(self, other: Connection) -> Connection {
+        // println!("&C | C -> C");
         Connection::Parallel(Box::new((self.clone(), other)))
     }
 }
 impl BitOr<&Connection> for Connection {
     type Output = Connection;
     fn bitor(self, other: &Connection) -> Connection {
+        // println!("C | &C -> C");
         Connection::Parallel(Box::new((self, other.clone())))
     }
 }
