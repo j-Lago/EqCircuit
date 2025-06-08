@@ -29,14 +29,6 @@ impl Debug for Connection{
     }
 }
 
-
-// impl From<&Connection> for Connection {
-//     fn from(item: &Connection) -> Self {
-//         item.clone()
-//     }
-// }
-
-
 impl Add for Connection {
     type Output = Self;
     fn add(self, other: Self) -> Self {
